@@ -1,0 +1,171 @@
+Step 1: Directory Structure
+-src
+    - controllers/
+        - authController.js
+        - postController.js
+        - userController.js
+    - models/
+        - User.js
+        - Post.js
+    - routes/
+        - authRoutes.js
+        - postRoutes.js
+        - userRoutes.js
+        - index.js (Entry point for all routers)
+    - services/
+        - authService.js
+        - postService.js
+        - userService.js
+        - emailService.js
+    - config/
+        - db_config.js
+    - appDB/
+        - migrations/ (automatically created after running migration command)
+        - seeds/ (automatically created after running seed command)
+    - middleware/
+        - authMiddleware.js
+    - index.js (ENTRY POINT)
+    - package.json (automatically created after initializing the api)
+    - package.lock.json (automatically created after installing the dependencies)
+    - .env
+    - .gitignore
+    - Dockerfile (automatically created after docker extension installation)
+    - knexfile.js (automatically created after running knex command)
+    - README.md (automatically created after git installation)
+
+
+Step : Initialize the api using the following command this will create package.json
+
+-- npm init -y
+
+Step : Install all the basic dependencies needed for the project this will create package-lock.json
+
+-- npm install express knex body-parser bcrypt jsonwebtoken dotenv pg 
+-- npm install passport passport-jwt morgan helmet cors jest supertest nodemailer
+
+
+Step 2: Make the database
+
+-- Set up pg admin and make a database.(MEET-HERE)
+
+-- run the following command for making knexfile
+   -> knex init
+
+-- Configure your knexfile.js to connect to the database and define migration and seed directories.
+   refer - > KNEX_FILE_CODE
+
+-- make a connection variable in .env file with sample below
+   DATABASE_URL="postgres://(username)postgres:(password)Jasvin@1993@(host_name)localhost:(port)5432/(database_name)meet_here"
+
+-- make the database connection make a separate file in config/db_config.js and follow the code
+   refer - > DATABASE_CONNECTION
+
+-- Create migrations to define the users and posts tables inside appDB run the following command.
+   -> npx knex migrate:make create_users_table
+   -> npx knex migrate:make create_posts_table
+
+-- Now refer KNEX_USERS_MIGRATION_CODE and KNEX_POSTS_MIGRATION_CODE the code and complete 
+   the user and post migration files
+
+-- Now run the following command to execute the migrations against the database
+   -> npx knex migrate:latest
+
+-- Create seeds for initial data using the below command
+   -> npx knex seed:make seed_users_data
+   -> npx knex seed:make seed_posts_data
+
+-- Refer the sample data from SAMPLE_USERS_DATA and SAMPLE_POSTS_DATA and fill the seed files.
+
+-- Now to run the seeds against the database use the following command
+   -> npx knex seed:run
+
+Step 3: Models
+
+-- Define User.js and Post.js models in the models directory using Knex.js schema definitions.
+   refer -> USERS_MODEL_CODE
+   refer -> POSTS_MODEL_CODE
+
+Step 4: Controllers
+
+-- Implement authController.js to handle user registration and login.
+   refer -> AUTH_CONTROLLER_CODE
+
+-- Implement postController.js to manage posts (create, update, delete, fetch).
+   refer -> POST_CONTROLLER_CODE
+
+-- Implement userController.js to handle user-related operations (e.g., getting user data).
+   refer -> USER_CONTROLLER_CODE
+
+Step 5: Services
+
+-- Create authService.js and emailService.js in the services directory. These services should encapsulate 
+   the business logic.
+   refer -> AUTH_SERVICE_CODE & EMAIL_SERVICE_CODE
+
+   NOTE:
+   -> If email service doesn't work generate app specific password from gmail 2 factor authentication
+
+Step 6: Routes
+
+-- Make home route index.js.
+   refer -> INDEX_ROUTE_CODE
+
+-- Make auth route authRoutes.js.
+   refer -> AUTH_ROUTE_CODE
+
+-- Make user route userRoutes.js.
+   refer -> USER_ROUTE_CODE
+
+-- Make post route authRoutes.js.
+   refer -> POST_ROUTE_CODE
+
+These routes should map to the appropriate controller methods.
+
+Step 7: Middleware
+
+-- Implement authMiddleware.js to protect routes that require authentication by verifying JWT tokens.
+   refer -> AUTH_MIDDLEWARE_CODE
+
+Step 8: Authentication
+
+-- In authController.js, implement user registration and login routes using Passport.js
+   or another authentication library of your choice.
+
+-- Generate and return JWT tokens upon successful login.
+
+Step 9: Authorization
+
+-- Implement authorization checks in the postController.js 
+   to ensure that users can only update or delete their own posts.
+
+Step 10: Testing
+
+-- Write unit tests for controllers, services, and middleware using a testing library like Jest.
+
+Step 11: Error Handling
+
+-- Implement error handling in controllers to provide meaningful error responses.
+
+Step 12: Documentation
+
+-- Document your API, including endpoints, request/response formats, and authentication methods.
+
+Step 13: Deployment
+
+-- Deploy your Node.js application to a cloud platform like AWS, Azure, or Heroku.
+
+Step 14: Monitoring
+
+-- Set up logging and monitoring to track API usage and errors.
+
+Step 15: Security
+
+-- Implement security best practices, including input validation, rate limiting, and CORS configuration.
+
+Step 16: User Management
+
+-- Implement additional user management features as needed, such as user profiles and password reset.
+
+Step 17: Additional Features
+
+-- Expand your application by adding more features like comments, likes, and notifications.
