@@ -12,6 +12,9 @@ Step 1: Directory Structure
         - postRoutes.js
         - userRoutes.js
         - index.js (Entry point for all routers)
+    - data/
+        - userData.json
+        - postData.json 
     - services/
         - authService.js
         - postService.js
@@ -29,7 +32,6 @@ Step 1: Directory Structure
     - package.lock.json (automatically created after installing the dependencies)
     - .env
     - .gitignore
-    - Dockerfile (automatically created after docker extension installation)
     - knexfile.js (automatically created after running knex command)
     - README.md (automatically created after git installation)
 
@@ -74,7 +76,10 @@ Step 2: Make the database
    -> npx knex seed:make seed_users_data
    -> npx knex seed:make seed_posts_data
 
--- Refer the sample data from SAMPLE_USERS_DATA and SAMPLE_POSTS_DATA and fill the seed files.
+-- Make two files in data folder postData.json and userData.json and copy the sample
+   json data from -> USERS_JSON_DATA and POSTS_JSON_DATA
+
+-- Refer the sample data from USERS_SEED_CODE and POSTS_SEED_CODE and fill the seed files.
 
 -- Now to run the seeds against the database use the following command
    -> npx knex seed:run
