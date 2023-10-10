@@ -33,7 +33,7 @@ async function findById(id) {
   try {
     const user = await knex('users').where('id', id).first();
 
-    return user || null; // User not found returns null
+    return user || false; // User not found returns null
   } catch (error) {
     // Handle the error (e.g., log it or throw a custom error)
     throw new Error('Error finding user by ID: ' + error.message);

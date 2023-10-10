@@ -1,7 +1,6 @@
 Step 1: Directory Structure
 -src
     - controllers/
-        - authController.js
         - postController.js
         - userController.js
     - models/

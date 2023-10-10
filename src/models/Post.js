@@ -5,8 +5,7 @@ const knex = require('../config/db_config'); // Import your Knex database connec
 // Create a new post
 async function createPost(post) {
   try {
-    const [newPostId] = await knex('posts').insert(post);
-    return newPostId;
+     return await knex('posts').insert(post);
   } catch (error) {
     // Handle the error (e.g., log it or throw a custom error)
     throw new Error('Error creating post: ' + error.message);

@@ -1,6 +1,6 @@
 // controllers/userController.js
 
-const User = require('../models/user'); // Import the User model
+const User = require('../models/User'); // Import the User model
 const { validationResult } = require('express-validator');
 
 // Create a new user
@@ -38,7 +38,7 @@ async function createUser(req, res) {
 // Get user by ID
 async function getUserById(req, res) {
   try {
-    const userId = req.params.id;
+    const userId = req.params.id;;
 
     // Find the user by ID
     const user = await User.findById(userId);
